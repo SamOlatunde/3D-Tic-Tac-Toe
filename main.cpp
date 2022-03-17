@@ -62,7 +62,6 @@ bool checkWin(Stack gameboard[SIZE][SIZE], char op)
 {
   // declaration and initialization of flags for the different win instances (vertical, horizontal, or diagonal)
   bool flagRow = false, flagCol = false, flagDiag = false, checkWinner = false;
-
   // checking horizontally 
   for (int r = 0; r < SIZE; r++)
   {
