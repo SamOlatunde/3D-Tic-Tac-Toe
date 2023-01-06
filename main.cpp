@@ -1,10 +1,9 @@
 // Samuel Olatunde 
 // November 16, 2021
-// This program is traditional tic-tac-toe game, with the added twist that players can play on top of otherpieces. 
+// This program is traditional tic-tac-toe game, with the added twist that players can 
+// play on top of otherpieces.In other words, its a 3 Dimensional tic-tac-toe game  
 #include <iostream>
 #include <cctype>
-
-// can this program have a kill switch, like like a way of pausing in between like the way real games are
 #include "stack.h"
 
 using namespace std;
@@ -13,7 +12,7 @@ using namespace std;
 const int SIZE = 3;
 const char x = 'X', o = 'O';
 
-// function prototypes
+// function prototype
 bool dia(Stack gameboard[SIZE][SIZE],char);
 bool checkWin(Stack gameboard[SIZE][SIZE], char op);
 void printBoard (Stack gameboard[SIZE][SIZE]);
@@ -49,7 +48,6 @@ int main()
     cont = tolower(cont);
   }while (cont == 'y');
   
- 
  return 0;
 } 
 
@@ -62,6 +60,7 @@ bool checkWin(Stack gameboard[SIZE][SIZE], char op)
 {
   // declaration and initialization of flags for the different win instances (vertical, horizontal, or diagonal)
   bool flagRow = false, flagCol = false, flagDiag = false, checkWinner = false;
+
   // checking horizontally 
   for (int r = 0; r < SIZE; r++)
   {
@@ -85,7 +84,8 @@ bool checkWin(Stack gameboard[SIZE][SIZE], char op)
   }
 
   // checking diagonally+
-  if ((gameboard[0][0].peek()== op && gameboard[1][1].peek()== op && gameboard[2][2].peek() == op) || (gameboard[0][2].peek()== op && gameboard[1][1].peek()== op && gameboard[2][0].peek() == op))
+  if ((gameboard[0][0].peek()== op && gameboard[1][1].peek()== op && gameboard[2][2].peek() == op) 
+      || (gameboard[0][2].peek()== op && gameboard[1][1].peek()== op && gameboard[2][0].peek() == op))
   {
     
     flagDiag = true;
@@ -103,9 +103,9 @@ bool checkWin(Stack gameboard[SIZE][SIZE], char op)
 
 
 //Name: printBoard
-//Input: takes in a 2D array of structs, and a char variable 
+//Input: takes in a 2D array of structs
 //Process: prints the elements 
-//Output: 
+//Output: Prints a gameboard
 // methods that prints the game in a relative and not absolute way
 void printBoard (Stack gameboard[SIZE][SIZE])
 {
@@ -119,10 +119,12 @@ void printBoard (Stack gameboard[SIZE][SIZE])
 } 
 
 
-//Name: checkWin
-//Input: takes 
-//Process:
-//Output: 
+//Name: isFull
+//Input: takes in a 2D array of structs
+//Process: uses nested for loops to traverse
+//         through our 2D array of stacks and
+//         count the number of full stacks 
+//Output: returns true or false 
 // method to check if the board is fool
 bool isFull(Stack gameboard[SIZE][SIZE])
 {
@@ -141,12 +143,22 @@ bool isFull(Stack gameboard[SIZE][SIZE])
   return (count == 9);
 }
 
+/************************************************ 
+//
+// Multiple Function Comment 
+//
+// Names of functions: playx and playo
+//
+// Input: both take in a 2D array of stacks 
+//
+// Description: the next two functions use
+// indirect recursion to pay X or O at a 
+// location in the game board while 
+// simultaneously checking if a player has won 
+// or if the gameboard is  full
 
-//Name: checkWin
-//Input: takes 
-//Process:
-//Output: 
-//the next two methods would use indirect recursion play the game
+*************************************************/
+
 void playx(Stack gameboard[SIZE][SIZE])
 {
   int row = 0, col = 0;
@@ -173,14 +185,8 @@ void playx(Stack gameboard[SIZE][SIZE])
   {
     playo(gameboard);
   }
-
-  
 }
 
-//Name: checkWin
-//Input: takes 
-//Process:
-//Output: 
 void playo(Stack gameboard[SIZE][SIZE])
 {
    int row = 0, col = 0;
